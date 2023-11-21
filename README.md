@@ -1,2 +1,2 @@
 # bimm143_github
-My classwork for Fall 23'
+My classwork for Fall 23' in BIMM143 at UCSD. 
