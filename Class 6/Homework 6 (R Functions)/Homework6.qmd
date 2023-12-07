@@ -1,0 +1,73 @@
+---
+title: "Homework6 (R Functions)"
+author: "Aisha Mohamed"
+format: pdf
+---
+
+Function that can analyze protein drug interactions by reading in any protein PDB data and will output a plot. 
+
+```{r}
+library(bio3d)
+```
+
+```{r}
+df <- data.frame(a=1:10, b=seq(200,400,length=10),c=11:20,d=NA)
+df$a <- (df$a - min(df$a)) / (max(df$a) - min(df$a))
+df$b <- (df$b - min(df$a)) / (max(df$b) - min(df$b))
+df$c <- (df$c - min(df$c)) / (max(df$c) - min(df$c))
+df$d <- (df$d - min(df$d)) / (max(df$a) - min(df$d)) 
+```
+
+```{r}
+s1 <- read.pdb("4AKE") # kinase with drug
+s2 <- read.pdb("1AKE") # kinase no drug
+s3 <- read.pdb("1E4Y") # kinase with drug
+
+s1.chainA <- trim.pdb(s1, chain="A", elety="CA")
+s2.chainA <- trim.pdb(s2, chain="A", elety="CA")
+s3.chainA <- trim.pdb(s1, chain="A", elety="CA")
+
+s1.b <- s1.chainA$atom$b
+s2.b <- s2.chainA$atom$b
+s3.b <- s3.chainA$atom$b
+
+plotb3(s1.b, sse=s1.chainA, typ="l", ylab="Bfactor")
+plotb3(s2.b, sse=s2.chainA, typ="l", ylab="Bfactor")
+plotb3(s3.b, sse=s3.chainA, typ="l", ylab="Bfactor")
+```
+
+```{r}
+protein_plot <- function(file, chain, elmnt, fctr) {
+
+  #Loop over vector elements
+  s1 <- lapply(file, read.pdb)
+  s1.chain <- lapply(s1, trim.pdb, chain = chain, elety = elmnt)
+
+  #Accessing columns 
+  s1.fctr <- lapply(s1.chain, function(x) x$atom[, fctr])
+  
+  #Set a color scheme
+  color_set <- c("green", "red", "blue")
+
+  #Creating the plot  
+  plotb3(s1.fctr[[1]], sse = s1.chain[[1]], typ = "l",  
+       ylab = paste(toupper(fctr), "factor", sep = ""),
+       col = color_set[1])
+
+  for(i in 2:length(file)) {
+    lines(s1.fctr[[i]], col = color_set[i])  
+  }
+  }
+ 
+```
+
+```{r}
+files <- c("4AKE", "1AKE", "1E4Y")
+chains <- "A"
+elements <- "CA"
+factors <- "b"
+
+protein_plot(files, chains, elements, factors)
+
+```
+
