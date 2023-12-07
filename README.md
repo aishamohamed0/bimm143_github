@@ -7,4 +7,4 @@ My classwork for Fall 23' in [BIMM143](https://bioboot.github.io/bimm143_F23/) a
 
 - Class 9: [](
 
-- Class 10: [](https://github.com/aishamohamed0/bimm143_github/blob/main/Class10/Class10.md)
+- Class 10: [Structural Bioinformatics](https://github.com/aishamohamed0/bimm143_github/blob/main/Class10/Class10.md)
