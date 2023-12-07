@@ -25,17 +25,17 @@ k
     K-means clustering with 2 clusters of sizes 30, 30
 
     Cluster means:
-              x         y
-    1  2.959489 -2.478146
-    2 -2.478146  2.959489
+             x        y
+    1 -2.92568  3.13816
+    2  3.13816 -2.92568
 
     Clustering vector:
-     [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1
-    [39] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+     [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2
+    [39] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
 
     Within cluster sum of squares by cluster:
-    [1] 47.94552 47.94552
-     (between_SS / total_SS =  90.2 %)
+    [1] 55.40055 55.40055
+     (between_SS / total_SS =  90.9 %)
 
     Available components:
 
@@ -56,8 +56,8 @@ k$size
 k$cluster
 ```
 
-     [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1
-    [39] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+     [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2
+    [39] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
 
 > Q. What about cluster centers?
 
@@ -65,9 +65,9 @@ k$cluster
 k$centers
 ```
 
-              x         y
-    1  2.959489 -2.478146
-    2 -2.478146  2.959489
+             x        y
+    1 -2.92568  3.13816
+    2  3.13816 -2.92568
 
 Now we got to the main results, let’s use them to plot our data with the
 kmeans() result.
