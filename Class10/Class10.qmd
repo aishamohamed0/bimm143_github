@@ -1,0 +1,152 @@
+---
+title: "Class 10"
+author: "Aisha Mohamed (A16297530)"
+format: pdf
+---
+
+## Introduction to the RCSB Protein Data Bank (PDB). 
+
+First let's see what's in the database, the main repository of 
+protein structures. 
+
+Downloaded composition stats from: https://www.rcsb.orgs/stats/summary
+
+For context: Release 2023_04 of 13-Sep-2023 of UnitProt/TrEMBL 
+contains 251600,768 sequence entries. The PDB only contains 183,201. 
+
+
+
+```{r}
+stats <- read.csv("PDBstats.csv", row.names = 1)
+stats
+```
+
+```{r}
+dim(stats)
+```
+
+There is a problem here due to commas in the numbers. This causes them to be treated 
+as characters. 
+
+```{r}
+x <- stats$X.ray
+x
+```
+
+```{r}
+as.numeric( gsub(",", "", x) )
+```
+
+Making a function of how to do this. 
+
+
+```{r}
+rm.comma <- function(x) {
+  as.numeric( gsub(",", "", x))
+}
+```
+
+
+```{r}
+rm.comma(stats$EM)
+```
+
+I can use the `apply()` function to fix this whole table. 
+
+```{r}
+apply(stats, 2, rm.comma)
+```
+
+```{r}
+pdbstats <- apply(stats, 2, rm.comma)
+rownames(pdbstats) <- rownames(stats)
+head(pdbstats)
+```
+
+```{r}
+totals <- apply(pdbstats, 2, sum)
+totals
+```
+
+
+> Q1: What percentage of structures in the PDB are solved by X-Ray and Electron 
+Microscopy.
+
+```{r}
+round(totals/totals["Total"] * 100, 2 )
+```
+
+
+> Q2: What proportion of structures in the PDB are protein?
+
+```{r}
+pdbstats[1, "Total"]
+```
+
+```{r}
+pdbstats[1, "Total"] / sum(pdbstats[, "Total"] * 100, 2)
+```
+
+
+
+
+```{r}
+round((pdbstats[1, "Total"] / 251600768) *100, 2) 
+```
+
+
+
+> Q4: Water molecules normally have 3 atoms. Why do we see just oneatom per water
+molecule inthis structure?
+
+This is a 2 Angstrom structure and hydrogen is not visible at this resolution. 1 
+Angrstrom or better is needed. 
+
+> Q5: There is a critical “conserved” water molecule in the binding site. Can you 
+identify this water molecule? 
+
+Water 308 is the conserved water molecule in the binding site. 
+
+> Q6: Generate and save a figure clearly showing the two distinct  chains of HIV-protease
+along with the ligand. You might also consider showing the catalytic residues ASP 25 
+in each chain and the critical water (we recommend “Ball & Stick” for these 
+side-chains). Add thisfigure to your Quarto document.
+
+Here is a figure of HIP-Pr with the catalytic ASP residues,  the MK1 compound and all 
+the important water 308. 
+
+![](1HSG.png)
+
+
+The bio3d package for structural bioinformatics. 
+
+```{r}
+library(bio3d)
+
+pdb <- read.pdb("1hsg")
+pdb
+```
+
+```{r}
+head(pdb$atom)
+```
+
+
+# Predicting functional motions of a single structure
+
+Let's finish today with a bioinformatics calculation to predict the functional motions 
+of a PDB structure. 
+
+
+```{r}
+adk <- read.pdb("6s36")
+
+m <- nma(adk)
+```
+
+```{r}
+plot(m)
+mktrj(m, file="adk_m7.pdb")
+
+```
+
