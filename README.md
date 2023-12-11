@@ -16,3 +16,5 @@ My classwork for Fall 23' in [BIMM143](https://bioboot.github.io/bimm143_F23/) a
 - Class 11: [Structural Bioinformatics pt. 2](https://github.com/aishamohamed0/bimm143_github/blob/main/Class11/Class10_pt2.md)
 
 - Class 12: [Genome Informatics](https://github.com/aishamohamed0/bimm143_github/blob/main/Class12/Class%2012%20Genome%20Informatics.pdf)
+
+- Class 13: [DESeq Lab](https://github.com/aishamohamed0/bimm143_github/blob/main/Class13/Class13.md)
