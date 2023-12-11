@@ -21,4 +21,4 @@ My classwork for Fall 23' in [BIMM143](https://bioboot.github.io/bimm143_F23/) a
 
 - Class 14: [RNA-Seq Analysis Mini-Project](https://github.com/aishamohamed0/bimm143_github/blob/main/Class14/Class14.md)
 
-- Class 19: [Investigating Pertussis Resurgence]()
+- Class 19: [Investigating Pertussis Resurgence](https://github.com/aishamohamed0/bimm143_github/blob/main/Class19/Class19.md)
