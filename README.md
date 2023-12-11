@@ -18,3 +18,5 @@ My classwork for Fall 23' in [BIMM143](https://bioboot.github.io/bimm143_F23/) a
 - Class 12: [Genome Informatics](https://github.com/aishamohamed0/bimm143_github/blob/main/Class12/Class%2012%20Genome%20Informatics.pdf)
 
 - Class 13: [DESeq Lab](https://github.com/aishamohamed0/bimm143_github/blob/main/Class13/Class13.md)
+
+- Class 14: [RNA-Seq Analysis Mini-Project](https://github.com/aishamohamed0/bimm143_github/blob/main/Class14/Class14.md)
