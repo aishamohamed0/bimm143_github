@@ -11,6 +11,6 @@ My classwork for Fall 23' in [BIMM143](https://bioboot.github.io/bimm143_F23/) a
 
 - Class 9: [Halloween Candy Mini-Project](https://github.com/aishamohamed0/bimm143_github/blob/main/Class9/Class9.md)
 
-- Class 10: [Structural Bioinformatics](https://github.com/aishamohamed0/bimm143_github/blob/main/Class10/Class10.md)
+- Class 10: [Structural Bioinformatics pt. 1](https://github.com/aishamohamed0/bimm143_github/blob/main/Class10/Class10.md)
 
-- Class 11: [Structural Bioinformatics](https://github.com/aishamohamed0/bimm143_github/blob/main/Class8/Class8.md)
+- Class 11: [Structural Bioinformatics pt. 2](https://github.com/aishamohamed0/bimm143_github/blob/main/Class11/Class10_pt2.md)
