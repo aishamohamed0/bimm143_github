@@ -343,3 +343,39 @@ ggplot(igg.pt) +
   geom_line() + geom_vline(xintercept = 14, linetype = "dashed", col = "black") 
 ```
 
+
+
+# Obtaining CMI-PB RNASeq data
+
+For RNA-Seq data the API query mechanism quickly hits the web browser interface limit for file size. 
+We will present alternative download mechanisms for larger CMI-PB datasets in the next section. However, 
+we can still do “targeted” RNA-Seq querys via the web accessible API.
+
+```{r}
+url <- "https://www.cmi-pb.org/api/v2/rnaseq?versioned_ensembl_gene_id=eq.ENSG00000211896.7"
+
+rna <- read_json(url, simplifyVector = TRUE) 
+```
+
+
+To facilitate further analysis we need to “join” the rna expression data with our metadata meta, which 
+is itself a join of sample and specimen data.
+
+```{r}
+#meta <- inner_join(specimen, subject)
+ssrna <- inner_join(rna, meta)
+```
+
+> Q19. Make a plot of the time course of gene expression for IGHG1 gene (i.e. a plot of visit vs. tpm).
+
+```{r}
+ggplot(ssrna) +
+  aes(x = visit, y = tpm, group=subject_id) +
+  geom_point() +
+  geom_line(alpha=0.2)
+```
+
+> Q20.: What do you notice about the expression of this gene (i.e. when is it at it’s maximum level)?
+
+The expression of this gene when it is at its' maximum level has a TPM value of over 6000. But the 
+maximum level doesn't endure for long as it drops down very drastically. 
